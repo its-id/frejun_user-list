@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Login, HomePage, Navbar } from "./components";
 
 function App() {
+  const isLoggedIn = localStorage.getItem("token") !== null;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/" exact element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />
+          <Route
+            path="/home"
+            element={
+              isLoggedIn ? (
+                <>
+                  <Navbar />
+                  <HomePage />
+                </>
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
