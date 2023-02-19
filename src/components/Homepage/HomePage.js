@@ -38,7 +38,6 @@ const HomePage = () => {
 
   const handleSelect = (e) => {
     const selectedVal = e.target.value;
-    console.log(selectedVal);
     //based on the gender, filter the data
 
     if (filteredArray.length > 0) {
@@ -47,7 +46,6 @@ const HomePage = () => {
         else return user.gender === selectedVal;
       });
       setData(temp);
-      console.log(data);
     }
   };
 
