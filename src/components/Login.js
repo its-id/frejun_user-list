@@ -13,9 +13,7 @@ const Login = () => {
       localStorage.setItem("token", token);
       toast.success("Login successfull");
       // redirect window to /home route
-      setTimeout(() => {
-        window.location.href = "/home";
-      }, 2000);
+      window.location.href = "/home";
     } else {
       return toast.error("Invalid username or password");
     }
