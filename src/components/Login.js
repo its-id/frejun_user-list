@@ -9,16 +9,16 @@ const Login = () => {
     e.preventDefault();
 
     if (username.toLowerCase() === "admin@frejun" && password === "12345678") {
-
       const token = "frejun-token"; //a unique token here
       localStorage.setItem("token", token);
       toast.success("Login successfull");
       // redirect window to /home route
-      window.location.href = "/home";
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 2000);
     } else {
       return toast.error("Invalid username or password");
     }
-
   };
 
   return (
